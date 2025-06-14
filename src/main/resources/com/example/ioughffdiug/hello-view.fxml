@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.ioughffdiug.MainController">
+
+    <top>
+        <MenuBar>
+            <Menu text="Файл">
+                <MenuItem text="Выход" onAction="#handleExit"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <center>
+        <TabPane fx:id="tabPane">
+            <Tab text="Каталог" closable="false">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+
+                    <HBox spacing="10">
+                        <TextField fx:id="searchField" promptText="Поиск..."/>
+                        <Button text="Поиск" onAction="#handleSearch"/>
+                    </HBox>
+
+                    <TableView fx:id="partsTable">
+                        <columns>
+                            <TableColumn text="Название" prefWidth="200"/>
+                            <TableColumn text="Категория" prefWidth="150"/>
+                            <TableColumn text="Цена" prefWidth="100"/>
+                            <TableColumn text="Бренд" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+
+                    <Button text="Добавить в корзину" onAction="#handleAddToCart"/>
+                </VBox>
+            </Tab>
+
+            <Tab text="Корзина" closable="false">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+
+                    <TableView fx:id="cartTable">
+                        <columns>
+                            <TableColumn text="Название" prefWidth="300"/>
+                            <TableColumn text="Цена" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+
+                    <Label fx:id="totalLabel" style="-fx-font-weight: bold;"/>
+                    <Button text="Оформить заказ" onAction="#handleCheckout"/>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>
